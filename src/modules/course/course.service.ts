@@ -59,6 +59,7 @@ const getAllCourseFromDB = async (query: Record<string, unknown>) => {
   const finalQuery = { ...searchQuery, ...otherFilters };
 
   const result = await Course.find(finalQuery)
+    .populate("category")
     .sort(sortQuery)
     .skip(skip)
     .limit(limitNumber)

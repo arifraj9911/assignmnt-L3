@@ -14,7 +14,9 @@ const detailsSchema = z.object({
 const courseBaseSchema = z.object({
   title: z.string().min(1, "Title is required"),
   instructor: z.string().min(1, "Instructor is required"),
-  categoryId: z.instanceof(Types.ObjectId).optional(),
+  category: z.string().refine((val) => Types.ObjectId.isValid(val), {
+    message: "Invalid Category Id",
+  }),
   price: z.number().positive("Price must be a positive number"),
   tags: z.array(tagsSchema).optional().default([]),
   startDate: z.string().min(1, "Start date is required"),

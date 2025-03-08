@@ -13,7 +13,7 @@ export type TDetails = {
 export type TCourse = {
   title: string;
   instructor: string;
-  categoryId?: Types.ObjectId;
+  category?: Types.ObjectId;
   price: number;
   tags: [TTags];
   startDate: string;
