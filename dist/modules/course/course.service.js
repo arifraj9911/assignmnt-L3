@@ -68,6 +68,7 @@ const getAllCourseFromDB = (query) => __awaiter(void 0, void 0, void 0, function
     }
     const finalQuery = Object.assign(Object.assign({}, searchQuery), otherFilters);
     const result = yield course_model_1.default.find(finalQuery)
+        .populate("category")
         .sort(sortQuery)
         .skip(skip)
         .limit(limitNumber)

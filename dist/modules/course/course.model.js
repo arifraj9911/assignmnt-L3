@@ -27,7 +27,7 @@ const detailsSchema = new mongoose_1.Schema({
 const courseSchema = new mongoose_1.Schema({
     title: { type: String, required: true },
     instructor: { type: String, required: true },
-    categoryId: {
+    category: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "Category",
         required: false,

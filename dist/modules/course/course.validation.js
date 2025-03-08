@@ -14,7 +14,9 @@ const detailsSchema = zod_1.z.object({
 const courseBaseSchema = zod_1.z.object({
     title: zod_1.z.string().min(1, "Title is required"),
     instructor: zod_1.z.string().min(1, "Instructor is required"),
-    categoryId: zod_1.z.instanceof(mongoose_1.Types.ObjectId).optional(),
+    category: zod_1.z.string().refine((val) => mongoose_1.Types.ObjectId.isValid(val), {
+        message: "Invalid Category Id",
+    }),
     price: zod_1.z.number().positive("Price must be a positive number"),
     tags: zod_1.z.array(tagsSchema).optional().default([]),
     startDate: zod_1.z.string().min(1, "Start date is required"),
