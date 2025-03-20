@@ -11,5 +11,13 @@ router.post(
   CourseController.createCourse
 );
 router.get("/", CourseController.getAllCourse);
+router.get("/:courseId/reviews", CourseController.getCourseByIdWithReviews);
+router.get("/best", CourseController.getBestCourseByAvgRating);
+
+router.patch(
+  "/update/:id",
+  validateRequest(CourseValidationSchema.updateCourseSchema),
+  CourseController.updateCourse
+);
 
 export const CourseRoutes = router;

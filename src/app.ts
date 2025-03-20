@@ -15,10 +15,12 @@ app.get("/", (req: Request, res: Response) => {
 // application router middleware
 app.use("/api/v1", router);
 
+// not found handler
+app.use(notFoundRouteHandler);
+
 // global error handler middleware
 app.use(globalErrorHandler);
 
-// not found handler
-app.use(notFoundRouteHandler);
+
 
 export default app;

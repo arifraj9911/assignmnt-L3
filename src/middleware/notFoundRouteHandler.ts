@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextFunction, Request, Response } from "express";
 
 const notFoundRouteHandler = (
-  error: any,
   req: Request,
   res: Response,
   next: NextFunction
@@ -14,8 +12,10 @@ const notFoundRouteHandler = (
   res.status(statusCode).json({
     success: false,
     message,
-    error,
+    error: "",
   });
+
+  return;
 };
 
 export default notFoundRouteHandler;

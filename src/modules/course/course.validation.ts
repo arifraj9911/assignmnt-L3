@@ -29,7 +29,11 @@ const createCourseSchema = z.object({
 });
 
 const updateCourseSchema = z.object({
-  body: courseBaseSchema.partial(),
+  body: courseBaseSchema
+    .extend({
+      details: detailsSchema.partial(),
+    })
+    .partial(),
 });
 
 export const CourseValidationSchema = {
